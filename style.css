@@ -100,21 +100,52 @@ img{max-width:100%;display:block}
     drop-shadow(0 18px 45px rgba(0,0,0,.65))
     drop-shadow(0 0 22px rgba(124,77,255,.22));
 }
-.logo.alt{
-  position:absolute; inset:0;
-  opacity:0;
-  filter: drop-shadow(0 0 18px rgba(255,59,215,.25));
-  animation: glitchpop 6s infinite;
-  will-change: opacity, transform;
+.logo-stack{
+  position: relative;
+  display: inline-block;
+  filter:
+    drop-shadow(0 18px 45px rgba(0,0,0,.65))
+    drop-shadow(0 0 22px rgba(124,77,255,.22));
 }
 
-@keyframes glitchpop{
-  0%,72%{ opacity:0; transform:translateX(0); }
-  73%{ opacity:1; transform:translateX(1px); }
-  74%{ opacity:0; transform:translateX(0); }
-  76%{ opacity:1; transform:translateX(-1px); }
-  77%{ opacity:0; transform:translateX(0); }
-  100%{ opacity:0; }
+/* 로고 크기: 너무 커졌으면 여기 숫자만 줄이면 됨 */
+.logo{
+  display:block;
+  width: min(760px, 88vw);
+  height: auto;
+}
+
+/* 오버레이 로고들은 위에 겹치고 기본은 안 보이게 */
+.logo-orange,
+.logo-pink{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+}
+
+/* 오렌지: "보라 위에" 가끔 반짝 */
+.logo-orange{
+  filter: drop-shadow(0 0 18px rgba(255,160,40,.28));
+  animation: orangeFlicker 14s ease-in-out infinite;
+}
+
+/* 핑크: "보라 아래로"가 아니라 '보라와 함께' 겹치는 반짝 레이어 */
+.logo-pink{
+  filter: drop-shadow(0 0 18px rgba(255,59,215,.22));
+  animation: pinkFlicker 18s ease-in-out infinite;
+}
+
+/* 짧게 켜졌다 꺼지는 패턴 (너무 빠르게 안 깜빡이게) */
+@keyframes orangeFlicker{
+  0%,48%{opacity:0}
+  50%,52%{opacity:1}
+  54%,100%{opacity:0}
+}
+@keyframes pinkFlicker{
+  0%,62%{opacity:0}
+  64%,66%{opacity:1}
+  68%,100%{opacity:0}
 }
 
 .tag{
