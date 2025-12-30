@@ -1,57 +1,57 @@
+/* ====== SC RESET ====== */
 :root{
-  --bg:#050508;
-  --fg:#f5f4ff;
-  --muted:rgba(245,244,255,.72);
-  --line:rgba(245,244,255,.14);
-  --glass:rgba(5,5,8,.55);
+  --sc-bg:#050508;
+  --sc-fg:#f5f4ff;
+  --sc-muted:rgba(245,244,255,.72);
+  --sc-line:rgba(245,244,255,.10);
 }
 
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 body{
   margin:0;
-  background:var(--bg);
-  color:var(--fg);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background:var(--sc-bg);
+  color:var(--sc-fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 }
+img{ max-width:100%; height:auto; display:block; }
+a{ color:inherit; }
 
-/* Top bar */
-.topbar{
+/* ====== TOP BAR ====== */
+.sc-topbar{
   position:fixed;
   top:0; left:0; right:0;
   z-index:50;
-  background:linear-gradient(to bottom, rgba(0,0,0,.65), rgba(0,0,0,.25));
+  background:linear-gradient(to bottom, rgba(0,0,0,.65), rgba(0,0,0,.18));
   backdrop-filter: blur(10px);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
-.topbar-inner{
+.sc-topbar__inner{
   height:64px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 22px;
 }
-.brand{
+.sc-brand{
+  text-decoration:none;
   letter-spacing:.22em;
   text-transform:uppercase;
   font-size:12px;
-  text-decoration:none;
-  color:var(--fg);
   opacity:.9;
 }
-.nav a{
+.sc-nav a{
   text-decoration:none;
-  color:var(--fg);
-  opacity:.78;
   font-size:12px;
   letter-spacing:.18em;
   text-transform:uppercase;
+  opacity:.78;
   margin-left:18px;
 }
-.nav a:hover{ opacity:1; }
+.sc-nav a:hover{ opacity:1; }
 
-/* HERO */
-.hero{
+/* ====== HERO ====== */
+.sc-hero{
   position:relative;
   min-height:100vh;
   display:flex;
@@ -61,33 +61,33 @@ body{
   overflow:hidden;
 }
 
-.hero-bg{
+.sc-hero__bg{
   position:absolute;
   inset:-6%;
   background-image:url("./assets/hero.jpg");
   background-size:cover;
   background-position:center;
-  filter: contrast(1.05) saturate(1.05);
   transform:scale(1.03);
-  animation: slowzoom 14s ease-in-out infinite alternate;
+  filter:contrast(1.05) saturate(1.05);
+  animation: sc-slowzoom 14s ease-in-out infinite alternate;
 }
 
-@keyframes slowzoom{
+@keyframes sc-slowzoom{
   from{ transform:scale(1.03); }
   to{ transform:scale(1.08); }
 }
 
-.hero-vignette{
+.sc-hero__vignette{
   position:absolute;
   inset:0;
   background:
     radial-gradient(60% 55% at 50% 40%, rgba(124,77,255,.22), rgba(0,0,0,0) 55%),
-    radial-gradient(70% 70% at 20% 85%, rgba(255,59,215,.18), rgba(0,0,0,0) 60%),
-    linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.75));
+    radial-gradient(70% 70% at 20% 85%, rgba(255,59,215,.16), rgba(0,0,0,0) 60%),
+    linear-gradient(to bottom, rgba(0,0,0,.30), rgba(0,0,0,.78));
   pointer-events:none;
 }
 
-.grain{
+.sc-grain{
   position:absolute;
   inset:-20%;
   opacity:.12;
@@ -96,74 +96,74 @@ body{
   pointer-events:none;
 }
 
-.hero-inner{
+.sc-hero__inner{
   position:relative;
+  z-index:2;
   width:min(980px, 92vw);
   text-align:center;
-  z-index:2;
 }
 
-/* LOGO: 3장 겹치고 5초마다 페이드로 색 변경 */
-.logo-wrap{
-  position:relative;
+/* ====== LOGO SWITCH (핵심) ====== */
+/* Grid 한 칸에 3개를 강제 겹치고, object-fit으로 크기 통일 */
+.sc-logoWrap{
   width:min(980px, 92vw);
   margin:0 auto 22px;
+
+  /* 로고 박스 높이 고정(세 로고 크기 100%로 통일됨) */
+  height: clamp(180px, 22vw, 340px);
+
+  display:grid;
+  place-items:center;
+
   filter:
     drop-shadow(0 18px 45px rgba(0,0,0,.65))
-    drop-shadow(0 0 24px rgba(124,77,255,.22));
+    drop-shadow(0 0 22px rgba(124,77,255,.22));
 }
 
-.logo{
+.sc-logo{
+  grid-area:1 / 1;
   width:100%;
-  height:auto;
-  display:block;
+  height:100%;
+  object-fit:contain; /* <- PNG 비율/여백 달라도 같은 박스에 맞춰짐 */
   opacity:0;
-  position:absolute;
-  inset:0;
-  will-change: opacity;
-  animation: logoSlot 15s infinite;
+  will-change:opacity;
+  animation: sc-logoSlot 15s infinite;
+  pointer-events:none;
 }
 
-.logo--purple{
-  opacity:1; /* 로딩 순간 깜빡임 방지 */
+.sc-logo--purple{
+  opacity:1; /* 로딩 순간 흰 화면/깜빡임 방지 */
   filter: drop-shadow(0 0 22px rgba(124,77,255,.25));
   animation-delay:0s;
 }
-.logo--orange{
+.sc-logo--orange{
   filter: drop-shadow(0 0 18px rgba(255,140,40,.20));
   animation-delay:5s;
 }
-.logo--pink{
+.sc-logo--pink{
   filter: drop-shadow(0 0 18px rgba(255,59,215,.22));
   animation-delay:10s;
 }
 
-/* 15초 루프 = 5초(보라) + 5초(주황) + 5초(핑크)
-   각 슬롯에서 fade-in -> 유지 -> fade-out */
-@keyframes logoSlot{
-  0%   { opacity:0; }
-  6%   { opacity:1; }   /* fade in */
-  26%  { opacity:1; }   /* hold */
-  33.333% { opacity:0; }/* fade out */
-  100% { opacity:0; }
+/* 15초 = 5초 x 3 (보라 -> 주황 -> 핑크)
+   각 5초 슬롯 내에서: fade-in(0.8s) -> 유지 -> fade-out(0.8s) */
+@keyframes sc-logoSlot{
+  0%    { opacity:0; }
+  5.5%  { opacity:1; }
+  27.5% { opacity:1; }
+  33.333% { opacity:0; }
+  100%  { opacity:0; }
 }
 
-/* 로고 wrap 높이 확보 (absolute라서 필요) */
-.logo-wrap::before{
-  content:"";
-  display:block;
-  padding-top: 22%; /* 로고 가로가 긴 편이면 18~26% 사이로 조절 */
-}
-
-/* CTA */
-.cta{
+/* ====== CTA ====== */
+.sc-cta{
   display:flex;
-  gap:12px;
   justify-content:center;
+  gap:12px;
   flex-wrap:wrap;
 }
 
-.btn{
+.sc-btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -172,43 +172,45 @@ body{
   border-radius:999px;
   border:1px solid rgba(255,255,255,.16);
   background:rgba(0,0,0,.28);
-  color:var(--fg);
+  backdrop-filter: blur(10px);
   text-decoration:none;
   font-size:12px;
   letter-spacing:.16em;
   text-transform:uppercase;
-  backdrop-filter: blur(10px);
   opacity:.92;
+  transition: transform .15s ease, opacity .15s ease;
 }
-.btn:hover{ opacity:1; transform: translateY(-1px); }
-.btn.primary{
+.sc-btn:hover{ opacity:1; transform: translateY(-1px); }
+
+.sc-btn--primary{
   border-color: rgba(255,59,215,.25);
   box-shadow: 0 0 0 1px rgba(124,77,255,.10) inset;
 }
 
-/* Sections (심플 유지) */
-.section{
+/* ====== SECTIONS ====== */
+.sc-section{
   padding:56px 0;
   border-top:1px solid rgba(255,255,255,.06);
   background: radial-gradient(60% 60% at 50% 0%, rgba(124,77,255,.07), rgba(0,0,0,0) 60%);
 }
-.section-inner{
+.sc-section__inner{
   width:min(980px, 92vw);
   margin:0 auto;
 }
-h2{
+.sc-section h2{
   margin:0 0 10px;
   font-size:18px;
   letter-spacing:.12em;
   text-transform:uppercase;
 }
-.muted{ color:var(--muted); }
+.sc-muted{ color:var(--sc-muted); }
 
-.footer{
+/* ====== FOOTER ====== */
+.sc-footer{
   padding:26px 0;
   border-top:1px solid rgba(255,255,255,.06);
 }
-.footer-inner{
+.sc-footer__inner{
   width:min(980px, 92vw);
   margin:0 auto;
   font-size:12px;
@@ -216,9 +218,8 @@ h2{
   opacity:.8;
 }
 
-/* 접근성: 모션 줄이기 */
+/* ====== REDUCED MOTION ====== */
 @media (prefers-reduced-motion: reduce){
-  .hero-bg{ animation:none; }
-  .logo{ animation:none; opacity:1; position:static; }
-  .logo-wrap::before{ display:none; }
+  .sc-hero__bg{ animation:none; }
+  .sc-logo{ animation:none; opacity:1; }
 }
