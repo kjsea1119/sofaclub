@@ -3,65 +3,109 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SOFACLAB</title>
+  <title>SOFACLUB</title>
+  <meta name="description" content="SOFACLUB — flash nights, chrome energy." />
   <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
   <header class="nav">
-    <a class="brand" href="/">SOFACLAB</a>
+    <a class="brand" href="./">SOFACLUB</a>
     <nav class="menu">
-      <a href="#merch">Merch</a>
-      <a href="#music">Music</a>
-      <a href="#live">Live</a>
+      <a href="#merch">MERCH</a>
+      <a href="#music">MUSIC</a>
+      <a href="#live">LIVE</a>
     </nav>
   </header>
 
-  <main class="hero">
-    <div class="glow"></div>
-    <div class="content">
-      <h1 class="logo">SOFACLAB</h1>
-      <p class="tag">Black canvas. Chrome energy. Flash nights.</p>
+  <main class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="logo-stack">
+        <img class="logo base" src="./assets/logo-purple.png" alt="SOFACLUB" />
+        <img class="logo alt"  src="./assets/logo-pink.png" alt="" />
+      </div>
+
+      <p class="tag">
+        Black canvas. Chrome energy. Flash nights.<br/>
+        <span class="muted">KR / EN</span>
+      </p>
+
       <div class="cta">
-        <a class="btn" href="#merch">Merchandise</a>
-        <a class="btn ghost" href="#music">Music</a>
-        <a class="btn ghost" href="#live">Live</a>
+        <a class="btn primary" href="#merch">MERCHANDISE</a>
+        <a class="btn" href="#music">MUSIC</a>
+        <a class="btn" href="#live">LIVE</a>
       </div>
     </div>
   </main>
 
-  <section id="merch" class="section">
-    <h2>Merch</h2>
-    <div class="grid">
-      <article class="card">
-        <div class="thumb"></div>
-        <h3>Tee</h3>
-        <p>Coming soon</p>
-      </article>
-      <article class="card">
-        <div class="thumb"></div>
-        <h3>Keyring</h3>
-        <p>Coming soon</p>
-      </article>
-      <article class="card">
-        <div class="thumb"></div>
-        <h3>Poster</h3>
-        <p>Coming soon</p>
-      </article>
+  <section id="music" class="section">
+    <div class="inner">
+      <div class="section-head">
+        <h2>MUSIC</h2>
+        <p class="muted">Links (Spotify / SoundCloud / YouTube) will live here.</p>
+      </div>
+
+      <div class="gallery">
+        <img src="./assets/g1.jpg" alt="SOFACLUB photo 1" loading="lazy" />
+        <img src="./assets/g2.jpg" alt="SOFACLUB photo 2" loading="lazy" />
+        <img src="./assets/g3.jpg" alt="SOFACLUB photo 3" loading="lazy" />
+      </div>
     </div>
   </section>
 
-  <section id="music" class="section">
-    <h2>Music</h2>
-    <p class="muted">Links will live here (YouTube / SoundCloud / Spotify).</p>
+  <section id="merch" class="section">
+    <div class="inner">
+      <div class="section-head">
+        <h2>MERCH</h2>
+        <p class="muted">Drop / restock info, sizes, shipping will go here.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-top"></div>
+          <h3>T-Shirt</h3>
+          <p class="muted">Coming soon</p>
+          <button class="ghost" disabled>Notify me</button>
+        </article>
+
+        <article class="card">
+          <div class="card-top"></div>
+          <h3>Keyring</h3>
+          <p class="muted">Coming soon</p>
+          <button class="ghost" disabled>Notify me</button>
+        </article>
+
+        <article class="card">
+          <div class="card-top"></div>
+          <h3>Poster</h3>
+          <p class="muted">Coming soon</p>
+          <button class="ghost" disabled>Notify me</button>
+        </article>
+      </div>
+    </div>
   </section>
 
   <section id="live" class="section">
-    <h2>Live</h2>
-    <p class="muted">Shows / tickets / updates.</p>
+    <div class="inner">
+      <div class="section-head">
+        <h2>LIVE</h2>
+        <p class="muted">Shows / tickets / updates.</p>
+      </div>
+
+      <div class="notice">
+        <p class="muted">No dates yet. When you add dates, we’ll make a clean list + ticket buttons.</p>
+      </div>
+    </div>
   </section>
 
   <footer class="footer">
-    <p class="muted">© SOFACLAB</p>
+    <div class="inner footer-inner">
+      <p class="muted">© SOFACLUB</p>
+      <a class="muted" href="#top">Back to top</a>
+    </div>
   </footer>
 </body>
 </html>
