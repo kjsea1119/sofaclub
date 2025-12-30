@@ -4,109 +4,70 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SOFACLUB</title>
-  <meta name="description" content="SOFACLUB — flash nights, chrome energy." />
-  <link rel="stylesheet" href="./style.css" />
+  <meta name="description" content="SOFACLUB" />
+  <!-- 캐시 때문에 갱신 안 되는 거 방지 -->
+  <link rel="stylesheet" href="./style.css?v=3" />
 </head>
 
 <body>
-  <header class="nav">
-    <a class="brand" href="./">SOFACLUB</a>
-    <nav class="menu">
-      <a href="#merch">MERCH</a>
-      <a href="#music">MUSIC</a>
-      <a href="#live">LIVE</a>
-    </nav>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">SOFACLUB</a>
+      <nav class="nav">
+        <a href="#merch">MERCH</a>
+        <a href="#music">MUSIC</a>
+        <a href="#live">LIVE</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="hero" id="top">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="grain" aria-hidden="true"></div>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
 
-<div class="hero-inner">
-  <div class="logo-stack">
-    <img class="logo logo-orange" src="./assets/logo-orange.png" alt="SOFACLUB orange" />
-    <img class="logo logo-purple" src="./assets/logo-purple.png" alt="SOFACLUB purple" />
-    <img class="logo logo-pink" src="./assets/logo-pink.png" alt="SOFACLUB pink" />
-  </div>
+      <div class="hero-inner">
+        <div class="logo-wrap" aria-label="SOFACLUB logo">
+          <!-- 3장을 겹쳐두고, CSS로 5초마다 페이드 전환 -->
+          <img class="logo logo--purple" src="./assets/logo-purple.png" alt="SOFACLUB" />
+          <img class="logo logo--orange" src="./assets/logo-orange.png" alt="" aria-hidden="true" />
+          <img class="logo logo--pink"   src="./assets/logo-pink.png"   alt="" aria-hidden="true" />
+        </div>
 
-  <div class="cta">
-    <a class="btn primary" href="#merch">MERCHANDISE</a>
-    <a class="btn" href="#music">MUSIC</a>
-    <a class="btn" href="#live">LIVE</a>
-  </div>
-</div>
+        <div class="cta">
+          <a class="btn primary" href="#merch">MERCHANDISE</a>
+          <a class="btn" href="#music">MUSIC</a>
+          <a class="btn" href="#live">LIVE</a>
+        </div>
+      </div>
+    </section>
 
-  </main>
+    <!-- 아래는 “처음”처럼 섹션만 깔끔히 유지 (내용은 나중에 채우면 됨) -->
+    <section id="merch" class="section">
+      <div class="section-inner">
+        <h2>Merch</h2>
+        <p class="muted">Coming soon.</p>
+      </div>
+    </section>
 
-  <section id="music" class="section">
-    <div class="inner">
-      <div class="section-head">
-        <h2>MUSIC</h2>
+    <section id="music" class="section">
+      <div class="section-inner">
+        <h2>Music</h2>
         <p class="muted">Links (Spotify / SoundCloud / YouTube) will live here.</p>
       </div>
+    </section>
 
-      <div class="gallery">
-        <img src="./assets/g1.jpg" alt="SOFACLUB photo 1" loading="lazy" />
-        <img src="./assets/g2.jpg" alt="SOFACLUB photo 2" loading="lazy" />
-        <img src="./assets/g3.jpg" alt="SOFACLUB photo 3" loading="lazy" />
+    <section id="live" class="section">
+      <div class="section-inner">
+        <h2>Live</h2>
+        <p class="muted">Dates will live here.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="merch" class="section">
-    <div class="inner">
-      <div class="section-head">
-        <h2>MERCH</h2>
-        <p class="muted">Drop / restock info, sizes, shipping will go here.</p>
-      </div>
-
-      <div class="cards">
-        <article class="card">
-          <div class="card-top"></div>
-          <h3>T-Shirt</h3>
-          <p class="muted">Coming soon</p>
-          <button class="ghost" disabled>Notify me</button>
-        </article>
-
-        <article class="card">
-          <div class="card-top"></div>
-          <h3>Keyring</h3>
-          <p class="muted">Coming soon</p>
-          <button class="ghost" disabled>Notify me</button>
-        </article>
-
-        <article class="card">
-          <div class="card-top"></div>
-          <h3>Poster</h3>
-          <p class="muted">Coming soon</p>
-          <button class="ghost" disabled>Notify me</button>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="live" class="section">
-    <div class="inner">
-      <div class="section-head">
-        <h2>LIVE</h2>
-        <p class="muted">Shows / tickets / updates.</p>
-      </div>
-
-      <div class="notice">
-        <p class="muted">No dates yet. When you add dates, we’ll make a clean list + ticket buttons.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="inner footer-inner">
-      <p class="muted">© SOFACLUB</p>
-      <a class="muted" href="#top">Back to top</a>
-    </div>
-  </footer>
+    <footer class="footer">
+      <div class="footer-inner muted">© SOFACLUB</div>
+    </footer>
+  </main>
 </body>
 </html>
-
-
-
-
