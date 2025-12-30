@@ -1,72 +1,70 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SOFACLUB</title>
-
-  <!-- 캐시 갱신용 v값 -->
-  <link rel="stylesheet" href="./style.css?v=100" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
-
 <body>
-  <header class="sc-topbar">
-    <div class="sc-topbar__inner">
-      <a class="sc-brand" href="#top">SOFACLUB</a>
-      <nav class="sc-nav">
-        <a href="#merch">MERCH</a>
-        <a href="#music">MUSIC</a>
-        <a href="#live">LIVE</a>
-      </nav>
-    </div>
+  <header class="nav">
+    <a class="brand" href="#top">SOFACLUB</a>
+    <nav class="nav-links">
+      <a href="#merch">MERCH</a>
+      <a href="#music">MUSIC</a>
+      <a href="#live">LIVE</a>
+    </nav>
   </header>
 
   <main id="top">
-    <section class="sc-hero">
-      <div class="sc-hero__bg" aria-hidden="true"></div>
-      <div class="sc-hero__vignette" aria-hidden="true"></div>
-      <div class="sc-grain" aria-hidden="true"></div>
-
-      <div class="sc-hero__inner">
-        <div class="sc-logoWrap" aria-label="SOFACLUB logo">
-          <!-- 3장 겹쳐놓고 opacity 애니메이션으로 5초마다 페이드 전환 -->
-          <img class="sc-logo sc-logo--purple" src="./assets/logo-purple.png" alt="SOFACLUB" />
-          <img class="sc-logo sc-logo--orange" src="./assets/logo-orange.png" alt="" aria-hidden="true" />
-          <img class="sc-logo sc-logo--pink"   src="./assets/logo-pink.png"   alt="" aria-hidden="true" />
+    <section class="hero">
+      <div class="hero-inner">
+        <!-- 로고: 한 자리에서 색만 바뀜 -->
+        <div class="logo-cycle" aria-label="SOFACLUB logo">
+          <img class="logo-img logo-purple" src="./assets/logo-purple.png" alt="SOFACLUB" />
+          <img class="logo-img logo-orange" src="./assets/logo-orange.png" alt="" aria-hidden="true" />
+          <img class="logo-img logo-pink"   src="./assets/logo-pink.png"   alt="" aria-hidden="true" />
         </div>
 
-        <div class="sc-cta">
-          <a class="sc-btn sc-btn--primary" href="#merch">MERCHANDISE</a>
-          <a class="sc-btn" href="#music">MUSIC</a>
-          <a class="sc-btn" href="#live">LIVE</a>
+        <div class="cta">
+          <a class="btn primary" href="#merch">MERCHANDISE</a>
+          <a class="btn" href="#music">MUSIC</a>
+          <a class="btn" href="#live">LIVE</a>
         </div>
       </div>
+
+      <div class="grain" aria-hidden="true"></div>
     </section>
 
-    <section id="merch" class="sc-section">
-      <div class="sc-section__inner">
+    <section id="merch" class="section">
+      <div class="section-inner">
         <h2>Merch</h2>
-        <p class="sc-muted">Coming soon.</p>
+        <p>Coming soon.</p>
       </div>
     </section>
 
-    <section id="music" class="sc-section">
-      <div class="sc-section__inner">
+    <section id="music" class="section">
+      <div class="section-inner">
         <h2>Music</h2>
-        <p class="sc-muted">Links (Spotify / SoundCloud / YouTube) will live here.</p>
+        <p>Links (Spotify / SoundCloud / YouTube) will live here.</p>
+
+        <!-- g1~g3 “사라진 것처럼” 보였던 거: 여기서 다시 씀 -->
+        <div class="thumbs" aria-label="music gallery">
+          <img src="./assets/g1.jpg" alt="" />
+          <img src="./assets/g2.jpg" alt="" />
+          <img src="./assets/g3.jpg" alt="" />
+        </div>
       </div>
     </section>
 
-    <section id="live" class="sc-section">
-      <div class="sc-section__inner">
+    <section id="live" class="section">
+      <div class="section-inner">
         <h2>Live</h2>
-        <p class="sc-muted">Dates will live here.</p>
+        <p>Dates will live here.</p>
       </div>
     </section>
 
-    <footer class="sc-footer">
-      <div class="sc-footer__inner sc-muted">© SOFACLUB</div>
-    </footer>
+    <footer class="footer">© SOFACLUB</footer>
   </main>
 </body>
 </html>
