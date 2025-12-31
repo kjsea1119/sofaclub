@@ -1,252 +1,253 @@
 :root{
-  --bg:#050508;
-  --fg:#f5f4ff;
-  --muted:rgba(245,244,255,.72);
+  --bg:#07070a;
+  --fg:#f2f2f6;
+  --muted:rgba(242,242,246,.72);
+  --line:rgba(242,242,246,.14);
 
-  --nav-h:64px;
-  --pad: clamp(20px, 4vw, 48px);
+  --glass:rgba(0,0,0,.45);
+  --shadow:rgba(0,0,0,.55);
 
-  /* ✅ 로고가 아래로 밀리지 않게 너무 과하게 키우지 않음 */
-  --logo-h: clamp(150px, 18vw, 270px);
+  --radius:18px;
 }
 
 *{ box-sizing:border-box; }
-html,body{ height:100%; }
+html{ scroll-behavior:smooth; }
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   background:var(--bg);
   color:var(--fg);
 }
-a{ color:inherit; text-decoration:none; }
 
-/* NAV */
-.nav{
+/* ===== Top bar ===== */
+.topbar{
   position:fixed;
   top:0; left:0; right:0;
-  height:var(--nav-h);
+  height:68px;
+  z-index:50;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 var(--pad);
-  z-index:10;
-  background:rgba(5,5,8,.55);
+  padding:0 22px;
+
+  background:linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));
   backdrop-filter: blur(10px);
-  border-bottom:1px solid rgba(245,244,255,.08);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
+
 .brand{
-  letter-spacing:.18em;
-  text-transform:uppercase;
+  color:var(--fg);
+  text-decoration:none;
+  letter-spacing:.22em;
   font-size:12px;
   opacity:.95;
 }
-.nav-links{
+
+.nav{
   display:flex;
   gap:22px;
+}
+.nav a{
+  color:var(--fg);
+  text-decoration:none;
   font-size:12px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  opacity:.9;
+  letter-spacing:.18em;
+  opacity:.85;
 }
-.nav-links a{ padding:10px 6px; }
-.nav-links a:hover{ opacity:1; }
+.nav a:hover{ opacity:1; }
 
-/* HERO */
+/* 앵커 이동 시 상단바에 가리지 않게 */
+.section{ scroll-margin-top: 84px; }
+
+/* ===== Hero ===== */
 .hero{
-  min-height:100svh;
   position:relative;
+  min-height:100vh;
+  padding-top:68px; /* fixed topbar 공간 */
   overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding: calc(var(--nav-h) + 28px) var(--pad) 44px;
 }
+
+/* 배경 사진: “옆이 덜 잘리게” 기본은 가로 100% 기준으로 깔고,
+   모바일/좁은 화면에서는 cover로 전환 */
 .hero::before{
   content:"";
   position:absolute; inset:0;
   background-image:url("./assets/hero.jpg");
-  background-size:cover;
+  background-repeat:no-repeat;
   background-position:center;
-  transform:scale(1.06);
-  filter: saturate(1.05) contrast(1.05);
-  animation: slowzoom 14s ease-in-out infinite alternate;
+  background-size: 100% auto;  /* ← 옆이 덜 잘림 */
+  filter: grayscale(1) contrast(1.06) brightness(.78);
+  transform: scale(1.02);
 }
+@media (max-width: 980px){
+  .hero::before{ background-size: cover; } /* 좁을 땐 빈공간 방지 */
+}
+
+/* 비네팅/컬러 분위기 */
 .hero::after{
   content:"";
   position:absolute; inset:0;
   background:
-    radial-gradient(60% 60% at 50% 45%, rgba(124,77,255,.20), transparent 60%),
-    radial-gradient(60% 60% at 25% 70%, rgba(255,59,215,.16), transparent 55%),
-    linear-gradient(to bottom, rgba(0,0,0,.20), rgba(0,0,0,.72));
-  pointer-events:none;
-}
-@keyframes slowzoom{
-  from{ transform:scale(1.04); }
-  to{ transform:scale(1.10); }
-}
-
-.grain{
-  position:absolute; inset:-20%;
-  opacity:.12;
-  mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    radial-gradient(800px 520px at 50% 35%, rgba(124,77,255,.26), transparent 62%),
+    radial-gradient(900px 620px at 20% 85%, rgba(255,59,215,.18), transparent 60%),
+    linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.65));
   pointer-events:none;
 }
 
-/* ✅ 로고/버튼 배치 컨테이너 */
 .hero-inner{
   position:relative;
   z-index:2;
-  width:min(980px, 92vw);
+  min-height: calc(100vh - 68px);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:18px;
+  gap:22px;
+  padding: 26px 18px 34px;
 }
 
-/* ✅ 로고는 버튼 위 “강제” */
-.logo-cycle{ order:1; }
-.cta{ order:2; }
-
-/* LOGO CYCLE */
-.logo-cycle{
+/* ===== Logo stack (3 colors, one position) ===== */
+.logo-stack{
   position:relative;
-  height:var(--logo-h);
-  width:min(980px, 92vw);
-  display:grid;
-  place-items:center;
+  width: min(980px, 92vw);
   filter:
-    drop-shadow(0 18px 45px rgba(0,0,0,.65))
-    drop-shadow(0 0 22px rgba(124,77,255,.22));
+    drop-shadow(0 22px 60px rgba(0,0,0,.65))
+    drop-shadow(0 0 26px rgba(124,77,255,.22));
 }
 
-.logo-img{
-  grid-area:1 / 1;
-  height:100%;
-  width:auto;
-  max-width:100%;
+/* 로고 크기 기준(보라 로고로 박스 높이 확보) */
+.logo-sizer{
+  display:block;
+  width:100%;
+  height:auto;
   opacity:0;
-  will-change:opacity;
+  pointer-events:none;
 }
 
-/* ✅ 주황 로고만 “시각적으로” 작아보이는 걸 보정 */
-.logo-orange{
-  transform: scale(1.18);
-  transform-origin:center;
-  filter: drop-shadow(0 0 18px rgba(255,140,40,.18));
+/* 실제 로고 3장: 같은 자리에서 “겹치기” */
+.logo-layer{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+
+  opacity:0;
+  animation: cycle 15s ease-in-out infinite;
+  will-change: opacity;
 }
 
-.logo-pink{
-  filter: drop-shadow(0 0 18px rgba(255,59,215,.22));
+/* 각 색상 타이밍: 5초씩 */
+.logo-layer.purple{ animation-delay: 0s; }
+.logo-layer.orange{ animation-delay: 5s; }
+.logo-layer.pink{   animation-delay:10s; }
+
+/* 15초 중 0~5초 구간에서만 “켜졌다 꺼지게” 만들고 delay로 순환 */
+@keyframes cycle{
+  0%   { opacity:0; }
+  10%  { opacity:1; }  /* fade in */
+  26%  { opacity:1; }  /* hold */
+  33%  { opacity:0; }  /* fade out */
+  100% { opacity:0; }
 }
 
-/* 5초마다 페이드: 15초 루프 */
-.logo-purple{ animation: fadePurple 15s infinite; }
-.logo-orange{ animation: fadeOrange 15s infinite; }
-.logo-pink  { animation: fadePink  15s infinite; }
-
-@keyframes fadePurple{
-  0%{opacity:0}
-  3.33%{opacity:1}
-  30%{opacity:1}
-  33.33%{opacity:0}
-  100%{opacity:0}
-}
-@keyframes fadeOrange{
-  0%{opacity:0}
-  33.33%{opacity:0}
-  36.66%{opacity:1}
-  63.33%{opacity:1}
-  66.66%{opacity:0}
-  100%{opacity:0}
-}
-@keyframes fadePink{
-  0%{opacity:0}
-  66.66%{opacity:0}
-  70%{opacity:1}
-  96.66%{opacity:1}
-  100%{opacity:0}
-}
-
-/* CTA BUTTONS */
+/* ===== CTA Buttons ===== */
 .cta{
   display:flex;
   gap:12px;
   flex-wrap:wrap;
   justify-content:center;
 }
+
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  height:40px;
+  height:38px;
   padding:0 16px;
+
   border-radius:999px;
-  border:1px solid rgba(245,244,255,.18);
-  background:rgba(0,0,0,.18);
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  font-size:11px;
-  backdrop-filter: blur(8px);
-}
-.btn:hover{
-  border-color: rgba(245,244,255,.35);
-  background:rgba(0,0,0,.28);
-}
-.btn.primary{
-  border-color: rgba(255,59,215,.45);
-  box-shadow: 0 0 0 3px rgba(255,59,215,.10);
+  border:1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.30);
+  color:var(--fg);
+  text-decoration:none;
+
+  font-size:12px;
+  letter-spacing:.18em;
+  opacity:.92;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* SECTIONS */
-.section{
-  padding:56px var(--pad);
-  border-top:1px solid rgba(245,244,255,.07);
-  background:linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.75));
+.btn:hover{ opacity:1; transform: translateY(-1px); }
+.btn:active{ transform: translateY(0px); }
+
+.btn.primary{
+  border-color: rgba(255,59,215,.38);
+  box-shadow: 0 0 0 1px rgba(124,77,255,.18) inset;
 }
-.section-inner{
-  width:min(980px, 92vw);
+
+/* ===== Sections ===== */
+.container{
+  width:min(1100px, 92vw);
   margin:0 auto;
 }
-h2{
-  margin:0 0 10px;
-  font-size:14px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-}
-p{
-  margin:0;
-  color:var(--muted);
+
+.section{
+  padding:56px 0;
+  border-top: 1px solid rgba(255,255,255,.06);
+  background: linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.55));
 }
 
-/* ✅ g1 g2 g3 */
-.thumbs{
-  margin-top:16px;
+.section h2{
+  margin:0 0 12px;
+  font-size:18px;
+  letter-spacing:.02em;
+}
+
+.section-head{
   display:flex;
-  gap:12px;
-  overflow-x:auto;
-  padding-bottom:6px;
-}
-.thumbs img{
-  height:110px;
-  width:auto;
-  border-radius:14px;
-  border:1px solid rgba(245,244,255,.10);
-  background:rgba(0,0,0,.35);
+  align-items:baseline;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
 }
 
+.muted{ color:var(--muted); }
+
+/* ===== Music grid ===== */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:14px;
+}
+@media (max-width: 900px){
+  .grid{ grid-template-columns:1fr; }
+}
+
+.card{
+  margin:0;
+  border-radius: 20px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.22);
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+}
+
+.card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+}
+
+/* ===== Footer ===== */
 .footer{
-  padding:26px var(--pad) 46px;
-  text-align:center;
-  color:rgba(245,244,255,.55);
-  font-size:12px;
-  border-top:1px solid rgba(245,244,255,.07);
-  background:rgba(0,0,0,.75);
-}
-
-@media (prefers-reduced-motion: reduce){
-  .hero::before{ animation:none; }
-  .logo-purple,.logo-orange,.logo-pink{ animation:none; opacity:0; }
-  .logo-purple{ opacity:1; }
+  padding:28px 0 40px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  background: rgba(0,0,0,.70);
 }
