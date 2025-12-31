@@ -49,8 +49,8 @@ a:hover{ text-decoration:underline; text-underline-offset: 4px; }
 /* Hero */
 .hero{
   position:relative;
-  min-height: 86vh;          /* 스크롤 너무 길지 않게 */
-  padding-top: 78px;         /* topbar 만큼 */
+  min-height: 86vh;
+  padding-top: 78px;
   display:grid;
   place-items:center;
   overflow:hidden;
@@ -61,11 +61,11 @@ a:hover{ text-decoration:underline; text-underline-offset: 4px; }
   inset:0;
   background:
     radial-gradient(900px 420px at 50% 0%, rgba(124,77,255,.20), transparent 55%),
-    radial-gradient(720px 520px at 18% 70%, rgba(255,59,215,.16), transparent 55%),
+    radial-gradient(720px 520px at 18% 70%, rgba(255,59,215,.10), transparent 55%),
     linear-gradient(to bottom, rgba(0,0,0,.20), rgba(0,0,0,.62)),
     url("./assets/hero.jpg");
   background-size: cover;
-  background-position: center center;  /* 좌우 덜 잘리게 중앙 고정 */
+  background-position: center center;
   filter: saturate(.95) contrast(1.02);
   transform: scale(1.04);
 }
@@ -87,78 +87,17 @@ a:hover{ text-decoration:underline; text-underline-offset: 4px; }
   flex-direction:column;
   align-items:center;
   gap: 18px;
-  transform: translateY(18px); /* 로고가 버튼 위쪽에 자연스럽게 오게 */
+  transform: translateY(18px);
 }
 
-/* Logo stack (same size, same place) */
-.logo-stack{
-  position:relative;
+/* Logo (purple only) */
+.logo{
   width:min(860px, 92vw);
+  height:auto;
+  display:block;
   filter:
     drop-shadow(0 18px 45px rgba(0,0,0,.65))
     drop-shadow(0 0 22px rgba(124,77,255,.18));
-}
-
-.logo{
-  width:100%;
-  height:auto;
-  display:block;
-}
-
-/* layers overlay */
-.logo.layer{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  pointer-events:none;
-}
-
-/* IMPORTANT: if orange/pink PNG has extra transparent padding,
-   this visually equalizes it. Adjust 1.06~1.14 if needed. */
-.logo.layer.orange,
-.logo.layer.pink{
-  transform: scale(1.10);
-  transform-origin:center;
-}
-
-/* 15s cycle: purple(base) -> orange -> pink, every 5s with fade */
-.logo.base{
-  opacity:1;
-  animation: baseCycle 15s infinite;
-}
-.logo.layer.orange{
-  animation: orangeCycle 15s infinite;
-  filter: drop-shadow(0 0 18px rgba(255,140,0,.18));
-}
-.logo.layer.pink{
-  animation: pinkCycle 15s infinite;
-  filter: drop-shadow(0 0 18px rgba(255,59,215,.20));
-}
-
-/* Purple: visible 0-5s, fade out near 5s, stay out, return near 15s */
-@keyframes baseCycle{
-  0%   {opacity:1}
-  28%  {opacity:1}
-  34%  {opacity:0}
-  94%  {opacity:0}
-  100% {opacity:1}
-}
-/* Orange: visible 5-10s */
-@keyframes orangeCycle{
-  0%   {opacity:0}
-  32%  {opacity:0}
-  38%  {opacity:1}
-  61%  {opacity:1}
-  67%  {opacity:0}
-  100% {opacity:0}
-}
-/* Pink: visible 10-15s */
-@keyframes pinkCycle{
-  0%   {opacity:0}
-  66%  {opacity:0}
-  72%  {opacity:1}
-  94%  {opacity:1}
-  100% {opacity:0}
 }
 
 /* CTA buttons */
@@ -191,7 +130,7 @@ a:hover{ text-decoration:underline; text-underline-offset: 4px; }
 }
 
 .btn.primary{
-  border-color: rgba(255,59,215,.45);
+  border-color: rgba(255,59,215,.35);
   box-shadow: 0 0 0 1px rgba(255,59,215,.10) inset;
 }
 
