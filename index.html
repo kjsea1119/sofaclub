@@ -4,12 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SOFACLUB</title>
-  <link rel="stylesheet" href="./style.css?v=3" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
-  <header class="nav">
+  <header class="topbar">
     <a class="brand" href="#top">SOFACLUB</a>
-    <nav class="nav-links">
+
+    <nav class="nav">
       <a href="#merch">MERCH</a>
       <a href="#music">MUSIC</a>
       <a href="#live">LIVE</a>
@@ -17,56 +19,68 @@
   </header>
 
   <main id="top">
-    <section class="hero">
+    <section class="hero" aria-label="Hero">
       <div class="hero-inner">
+        <!-- 로고: 한 자리에서 5초마다 보라 -> 주황 -> 핑크로 페이드 전환 -->
+        <div class="logo-stack" aria-label="SOFACLUB Logo">
+          <!-- 높이(레이아웃) 고정용: 보라 로고로 박스 크기 잡기 -->
+          <img class="logo-sizer" src="./assets/logo-purple.png" alt="" aria-hidden="true" />
 
-        <!-- ✅ 로고는 무조건 버튼 위 (CSS에서도 order로 강제함) -->
-        <div class="logo-cycle" aria-label="SOFACLUB logo">
-          <img class="logo-img logo-purple" src="./assets/logo-purple.png" alt="SOFACLUB" />
-          <img class="logo-img logo-orange" src="./assets/logo-orange.png" alt="" aria-hidden="true" />
-          <img class="logo-img logo-pink"   src="./assets/logo-pink.png"   alt="" aria-hidden="true" />
+          <!-- 실제로 보이는 3장: 같은 자리에서 겹쳐지고, opacity만 애니메이션 -->
+          <img class="logo-layer purple" src="./assets/logo-purple.png" alt="SOFACLUB" />
+          <img class="logo-layer orange" src="./assets/logo-orange.png" alt="" aria-hidden="true" />
+          <img class="logo-layer pink" src="./assets/logo-pink.png" alt="" aria-hidden="true" />
         </div>
 
+        <!-- 버튼은 로고 아래 -->
         <div class="cta">
           <a class="btn primary" href="#merch">MERCHANDISE</a>
           <a class="btn" href="#music">MUSIC</a>
           <a class="btn" href="#live">LIVE</a>
         </div>
-
       </div>
-
-      <div class="grain" aria-hidden="true"></div>
     </section>
 
     <section id="merch" class="section">
-      <div class="section-inner">
+      <div class="container">
         <h2>Merch</h2>
-        <p>Coming soon.</p>
+        <p class="muted">Coming soon.</p>
       </div>
     </section>
 
     <section id="music" class="section">
-      <div class="section-inner">
-        <h2>Music</h2>
-        <p>Links (Spotify / SoundCloud / YouTube) will live here.</p>
+      <div class="container">
+        <div class="section-head">
+          <h2>Music</h2>
+          <p class="muted">Links (Spotify / SoundCloud / YouTube) will live here.</p>
+        </div>
 
-        <!-- ✅ g1 g2 g3 여기서 다시 보이게 -->
-        <div class="thumbs">
-          <img src="./assets/g1.jpg" alt="g1" />
-          <img src="./assets/g2.jpg" alt="g2" />
-          <img src="./assets/g3.jpg" alt="g3" />
+        <div class="grid">
+          <figure class="card">
+            <img src="./assets/g1.jpg" alt="SOFACLUB gallery 1" loading="lazy" />
+          </figure>
+          <figure class="card">
+            <img src="./assets/g2.jpg" alt="SOFACLUB gallery 2" loading="lazy" />
+          </figure>
+          <figure class="card">
+            <img src="./assets/g3.jpg" alt="SOFACLUB gallery 3" loading="lazy" />
+          </figure>
         </div>
       </div>
     </section>
 
     <section id="live" class="section">
-      <div class="section-inner">
+      <div class="container">
         <h2>Live</h2>
-        <p>Dates will live here.</p>
+        <p class="muted">Dates / Tickets / Posters coming soon.</p>
       </div>
     </section>
 
-    <footer class="footer">© SOFACLUB</footer>
+    <footer class="footer">
+      <div class="container">
+        <span class="muted">© SOFACLUB</span>
+      </div>
+    </footer>
   </main>
 </body>
 </html>
