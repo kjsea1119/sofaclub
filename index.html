@@ -9,8 +9,7 @@
 
 <body>
   <header class="topbar">
-    <a class="brand" href="#top">SOFACLUB</a>
-
+    <div class="brand">SOFACLUB</div>
     <nav class="nav">
       <a href="#merch">MERCH</a>
       <a href="#music">MUSIC</a>
@@ -18,21 +17,11 @@
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero" aria-label="Hero">
+  <main>
+    <section class="hero" id="top">
       <div class="hero-inner">
-        <!-- 로고: 한 자리에서 5초마다 보라 -> 주황 -> 핑크로 페이드 전환 -->
-        <div class="logo-stack" aria-label="SOFACLUB Logo">
-          <!-- 높이(레이아웃) 고정용: 보라 로고로 박스 크기 잡기 -->
-          <img class="logo-sizer" src="./assets/logo-purple.png" alt="" aria-hidden="true" />
+        <img class="logo" src="./assets/logo-purple.png" alt="SOFACLUB" />
 
-          <!-- 실제로 보이는 3장: 같은 자리에서 겹쳐지고, opacity만 애니메이션 -->
-          <img class="logo-layer purple" src="./assets/logo-purple.png" alt="SOFACLUB" />
-          <img class="logo-layer orange" src="./assets/logo-orange.png" alt="" aria-hidden="true" />
-          <img class="logo-layer pink" src="./assets/logo-pink.png" alt="" aria-hidden="true" />
-        </div>
-
-        <!-- 버튼은 로고 아래 -->
         <div class="cta">
           <a class="btn primary" href="#merch">MERCHANDISE</a>
           <a class="btn" href="#music">MUSIC</a>
@@ -50,21 +39,13 @@
 
     <section id="music" class="section">
       <div class="container">
-        <div class="section-head">
-          <h2>Music</h2>
-          <p class="muted">Links (Spotify / SoundCloud / YouTube) will live here.</p>
-        </div>
+        <h2>Music</h2>
+        <p class="muted">Links (Spotify / SoundCloud / YouTube) will live here.</p>
 
         <div class="grid">
-          <figure class="card">
-            <img src="./assets/g1.jpg" alt="SOFACLUB gallery 1" loading="lazy" />
-          </figure>
-          <figure class="card">
-            <img src="./assets/g2.jpg" alt="SOFACLUB gallery 2" loading="lazy" />
-          </figure>
-          <figure class="card">
-            <img src="./assets/g3.jpg" alt="SOFACLUB gallery 3" loading="lazy" />
-          </figure>
+          <img src="./assets/g1.jpg" alt="g1" loading="lazy" />
+          <img src="./assets/g2.jpg" alt="g2" loading="lazy" />
+          <img src="./assets/g3.jpg" alt="g3" loading="lazy" />
         </div>
       </div>
     </section>
@@ -77,9 +58,7 @@
     </section>
 
     <footer class="footer">
-      <div class="container">
-        <span class="muted">© SOFACLUB</span>
-      </div>
+      <div class="container muted">© SOFACLUB</div>
     </footer>
   </main>
 </body>
