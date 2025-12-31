@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SOFACLUB</title>
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./style.css?v=3" />
 </head>
 <body>
   <header class="nav">
@@ -19,7 +19,8 @@
   <main id="top">
     <section class="hero">
       <div class="hero-inner">
-        <!-- 로고: 한 자리에서 색만 바뀜 -->
+
+        <!-- ✅ 로고는 무조건 버튼 위 (CSS에서도 order로 강제함) -->
         <div class="logo-cycle" aria-label="SOFACLUB logo">
           <img class="logo-img logo-purple" src="./assets/logo-purple.png" alt="SOFACLUB" />
           <img class="logo-img logo-orange" src="./assets/logo-orange.png" alt="" aria-hidden="true" />
@@ -31,6 +32,7 @@
           <a class="btn" href="#music">MUSIC</a>
           <a class="btn" href="#live">LIVE</a>
         </div>
+
       </div>
 
       <div class="grain" aria-hidden="true"></div>
@@ -48,11 +50,11 @@
         <h2>Music</h2>
         <p>Links (Spotify / SoundCloud / YouTube) will live here.</p>
 
-        <!-- g1~g3 “사라진 것처럼” 보였던 거: 여기서 다시 씀 -->
-        <div class="thumbs" aria-label="music gallery">
-          <img src="./assets/g1.jpg" alt="" />
-          <img src="./assets/g2.jpg" alt="" />
-          <img src="./assets/g3.jpg" alt="" />
+        <!-- ✅ g1 g2 g3 여기서 다시 보이게 -->
+        <div class="thumbs">
+          <img src="./assets/g1.jpg" alt="g1" />
+          <img src="./assets/g2.jpg" alt="g2" />
+          <img src="./assets/g3.jpg" alt="g3" />
         </div>
       </div>
     </section>
