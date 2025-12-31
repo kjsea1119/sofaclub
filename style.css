@@ -158,11 +158,33 @@ a:hover{ text-decoration:underline; text-underline-offset: 4px; }
   opacity:.92;
 }
 .section-head p{
-  margin:0;
+  margin:6px 0 0;
   color:var(--muted);
   font-size:13px;
 }
 
+/* ✅ Music link button */
+.linkbtn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:40px;
+  padding:0 16px;
+  border-radius:999px;
+  border:1px solid rgba(245,244,255,.22);
+  background: rgba(0,0,0,.26);
+  backdrop-filter: blur(10px);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:11px;
+  white-space:nowrap;
+}
+.linkbtn:hover{
+  border-color: rgba(245,244,255,.42);
+  text-decoration:none;
+}
+
+/* Grid */
 .grid{
   width:min(980px, 92vw);
   margin:0 auto;
@@ -189,6 +211,7 @@ a:hover{ text-decoration:underline; text-underline-offset: 4px; }
   border-color: rgba(245,244,255,.22);
 }
 
+/* Placeholder */
 .placeholder{
   width:min(980px, 92vw);
   margin:0 auto;
@@ -207,6 +230,7 @@ a:hover{ text-decoration:underline; text-underline-offset: 4px; }
   font-size:13px;
 }
 
+/* Footer */
 .footer{
   padding: 26px 22px;
   text-align:center;
