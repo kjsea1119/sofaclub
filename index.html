@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SOFACLUB</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
   <header class="topbar">
-    <div class="brand">SOFACLUB</div>
+    <a class="brand" href="#top">SOFACLUB</a>
     <nav class="nav">
       <a href="#merch">MERCH</a>
       <a href="#music">MUSIC</a>
@@ -17,10 +17,18 @@
     </nav>
   </header>
 
-  <main>
-    <section class="hero" id="top">
+  <main id="top">
+    <section class="hero" aria-label="SOFACLUB hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+
       <div class="hero-inner">
-        <img class="logo" src="./assets/logo-purple.png" alt="SOFACLUB" />
+        <!-- LOGO (same size, same position, color cycles every 5s with fade) -->
+        <div class="logo-stack" aria-label="SOFACLUB logo">
+          <img class="logo base" src="./assets/logo-purple.png" alt="SOFACLUB" />
+          <img class="logo layer orange" src="./assets/logo-orange.png" alt="" />
+          <img class="logo layer pink" src="./assets/logo-pink.png" alt="" />
+        </div>
 
         <div class="cta">
           <a class="btn primary" href="#merch">MERCHANDISE</a>
@@ -30,36 +38,52 @@
       </div>
     </section>
 
-    <section id="merch" class="section">
-      <div class="container">
-        <h2>Merch</h2>
-        <p class="muted">Coming soon.</p>
+    <section id="music" class="section">
+      <div class="section-head">
+        <h2>MUSIC</h2>
+        <p>Links (Spotify / SoundCloud / YouTube) will live here.</p>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="#" aria-label="Music item 1">
+          <img src="./assets/g1.jpg" alt="" loading="lazy" />
+        </a>
+        <a class="card" href="#" aria-label="Music item 2">
+          <img src="./assets/g2.jpg" alt="" loading="lazy" />
+        </a>
+        <a class="card" href="#" aria-label="Music item 3">
+          <img src="./assets/g3.jpg" alt="" loading="lazy" />
+        </a>
       </div>
     </section>
 
-    <section id="music" class="section">
-      <div class="container">
-        <h2>Music</h2>
-        <p class="muted">Links (Spotify / SoundCloud / YouTube) will live here.</p>
-
-        <div class="grid">
-          <img src="./assets/g1.jpg" alt="g1" loading="lazy" />
-          <img src="./assets/g2.jpg" alt="g2" loading="lazy" />
-          <img src="./assets/g3.jpg" alt="g3" loading="lazy" />
-        </div>
+    <section id="merch" class="section">
+      <div class="section-head">
+        <h2>MERCH</h2>
+        <p>Merch drops and shop links will live here.</p>
+      </div>
+      <div class="placeholder">
+        <div class="pill">Coming soon</div>
       </div>
     </section>
 
     <section id="live" class="section">
-      <div class="container">
-        <h2>Live</h2>
-        <p class="muted">Dates / Tickets / Posters coming soon.</p>
+      <div class="section-head">
+        <h2>LIVE</h2>
+        <p>Show dates and flyers will live here.</p>
+      </div>
+      <div class="placeholder">
+        <div class="pill">Coming soon</div>
       </div>
     </section>
 
     <footer class="footer">
-      <div class="container muted">© SOFACLUB</div>
+      <span>© <span id="y"></span> SOFACLUB</span>
     </footer>
   </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
