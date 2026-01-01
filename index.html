@@ -1,393 +1,125 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="SOFA CLUB 공식 사이트" />
-  <title>SOFA CLUB</title>
-
-  <style>
-    :root{
-      --bg: #0b0b10;
-      --panel: rgba(255,255,255,0.06);
-      --panel-2: rgba(255,255,255,0.10);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.68);
-      --line: rgba(255,255,255,0.14);
-      --accent: #7a49ff; /* 보라 포인트 */
-      --accent-2: #b39bff;
-      --radius: 18px;
-      --shadow: 0 16px 60px rgba(0,0,0,0.55);
-      --max: 1100px;
-    }
-
-    *{ box-sizing: border-box; }
-    html, body{ height: 100%; }
-    body{
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
-      color: var(--text);
-      background: radial-gradient(1200px 700px at 30% -10%, rgba(122,73,255,0.25), transparent 55%),
-                  radial-gradient(900px 600px at 90% 0%, rgba(179,155,255,0.16), transparent 60%),
-                  var(--bg);
-      overflow-x: hidden;
-    }
-
-    a{ color: inherit; text-decoration: none; }
-    img{ display: block; max-width: 100%; height: auto; }
-
-    .wrap{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-
-    /* Header */
-    .header{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,11,16,0.65);
-      border-bottom: 1px solid var(--line);
-    }
-    .header__inner{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 0;
-      gap: 16px;
-    }
-    .brand{
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 160px;
-    }
-    .brand img{
-      height: 28px;
-      width: auto;
-    }
-    .nav{
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    .chip{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      font-weight: 700;
-      letter-spacing: .2px;
-      font-size: 14px;
-    }
-    .chip:hover{
-      transform: translateY(-1px);
-      border-color: rgba(122,73,255,0.55);
-      background: rgba(122,73,255,0.10);
-    }
-
-    /* Hero */
-    .hero{
-      position: relative;
-      min-height: 72vh;
-      display: grid;
-      place-items: center;
-      padding: 44px 0 20px;
-      border-bottom: 1px solid var(--line);
-      overflow: hidden;
-    }
-    .hero::before{
-      content:"";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(11,11,16,0.55) 0%, rgba(11,11,16,0.78) 55%, rgba(11,11,16,0.98) 100%),
-        url("assets/hero.jpg") center/cover no-repeat;
-      filter: saturate(1.05) contrast(1.05);
-      transform: scale(1.02);
-    }
-    .hero__content{
-      position: relative;
-      text-align: center;
-      padding: 28px 0 44px;
-    }
-    .hero__logo{
-      width: min(520px, 76vw);
-      margin: 0 auto 18px;
-      filter: drop-shadow(0 14px 30px rgba(0,0,0,0.65));
-    }
-    .hero__sub{
-      margin: 0 auto 22px;
-      max-width: 680px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
-    }
-    .hero__actions{
-      display: inline-flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .btn{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.05);
-      font-weight: 800;
-      font-size: 14px;
-      letter-spacing: .3px;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(122,73,255,0.6);
-      background: rgba(122,73,255,0.12);
-    }
-    .btn--primary{
-      border-color: rgba(122,73,255,0.85);
-      background: rgba(122,73,255,0.18);
-    }
-    .btn--primary:hover{
-      background: rgba(122,73,255,0.24);
-    }
-
-    /* Sections */
-    .section{
-      padding: 56px 0;
-    }
-    .section__head{
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-    .h2{
-      margin: 0;
-      font-size: 22px;
-      letter-spacing: .2px;
-    }
-    .desc{
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-      max-width: 720px;
-    }
-
-    .panel{
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-
-    /* Media grid / cards */
-    .grid{
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 14px;
-    }
-    .media-card{
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.04);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-      min-height: 160px;
-    }
-    .media-card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(122,73,255,0.55);
-      background: rgba(122,73,255,0.08);
-    }
-    .media-card img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      aspect-ratio: 16 / 10;
-      filter: saturate(1.05) contrast(1.03);
-      transform: scale(1.01);
-    }
-    .media-card__overlay{
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      padding: 12px;
-      background: linear-gradient(180deg, rgba(0,0,0,0.0) 40%, rgba(0,0,0,0.72) 100%);
-      pointer-events: none;
-    }
-    .tag{
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.28);
-      font-weight: 800;
-      font-size: 12px;
-      letter-spacing: .2px;
-    }
-    .dot{
-      width: 7px; height: 7px; border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px rgba(122,73,255,0.18);
-    }
-
-    /* Footer */
-    .footer{
-      padding: 34px 0 44px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      text-align: center;
-    }
-
-    /* Small */
-    @media (max-width: 520px){
-      .header__inner{ padding: 10px 0; }
-      .brand img{ height: 24px; }
-      .hero{ min-height: 68vh; }
-      .h2{ font-size: 20px; }
-    }
-  </style>
-</head>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SOFACLUB</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>                                
 
 <body>
-  <header class="header">
-    <div class="wrap header__inner">
-      <a class="brand" href="#top" aria-label="SOFA CLUB Home">
-        <!-- 보라색 로고(기존 파일명 유지해서 사용해도 됨) -->
-        <img src="assets/logo.png" alt="SOFA CLUB" />
-      </a>
-
-      <nav class="nav" aria-label="Primary">
-        <a class="chip" href="#merch">MERCH</a>
-        <a class="chip" href="#music">MUSIC</a>
-        <a class="chip" href="#live">LIVE</a>
-      </nav>
-    </div>
+  <header class="topbar">
+    <a class="brand" href="#top">SOFACLUB</a>
+    <nav class="nav">
+      <a href="#merch">MERCH</a>
+      <a href="#music">MUSIC</a>
+      <a href="#live">LIVE</a>
+    </nav>
   </header>
 
   <main id="top">
-    <section class="hero" aria-label="Hero">
-      <div class="wrap hero__content">
-        <img class="hero__logo" src="assets/logo.png" alt="SOFA CLUB logo" />
-        <p class="hero__sub">
-          SOFA CLUB 공식 페이지
-        </p>
-        <div class="hero__actions">
-          <a class="btn" href="#merch">MERCH</a>
-          <a class="btn btn--primary" href="#music">MUSIC</a>
+    <section class="hero" aria-label="SOFACLUB hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <img class="logo" src="./assets/logo-purple.png" alt="SOFACLUB" />
+
+        <div class="cta">
+          <a class="btn primary" href="#merch">MERCHANDISE</a>
+          <a class="btn" href="#music">MUSIC</a>
           <a class="btn" href="#live">LIVE</a>
         </div>
       </div>
     </section>
 
-    <section id="merch" class="section">
-      <div class="wrap">
-        <div class="section__head">
-          <h2 class="h2">MERCH</h2>
+    <section id="music" class="section">
+      <div class="section-head">
+        <div>
+          <h2>MUSIC</h2>
+          <p>Listen to “After Party”.</p>
         </div>
-        <div class="panel">
-          <p class="desc">머치 정보/링크를 여기에 추가해줘.</p>
-        </div>
+
+        <a
+          class="linkbtn"
+          href="https://li.sten.to/sofaclub_AfterParty?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn4-_KMwZHaGuoMYe9fd8e3jHlD6BmnvbS7G9ltQntJmWD3XUMqh6d0FVNP00_aem_oWhFWPUsRFEGIskb1L-T5Q"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LISTEN ↗
+        </a>
+      </div>
+
+      <!-- ✅ g3 카드 + ✅ g4 카드: 클릭하면 유튜브로 -->
+      <div class="grid">
+        <a
+          class="card"
+          href="https://www.youtube.com/watch?v=9K87CoAWG04"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Watch on YouTube (Music - g3)"
+        >
+          <img src="./assets/g3.jpg" alt="Watch on YouTube" loading="lazy" />
+          <div class="card-overlay">WATCH ↗</div>
+        </a>
+
+        <a
+          class="card"
+          href="https://www.youtube.com/watch?v=WHEZ3vBBFTI"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Watch on YouTube (Music - g4)"
+        >
+          <img src="./assets/g4.jpg" alt="Watch on YouTube" loading="lazy" />
+          <div class="card-overlay">WATCH ↗</div>
+        </a>
       </div>
     </section>
 
-    <section id="music" class="section">
-      <div class="wrap">
-        <div class="section__head">
-          <h2 class="h2">MUSIC</h2>
-        </div>
-
-        <div class="panel">
-          <p class="desc">
-            아래 버튼으로 바로 듣기:
-          </p>
-          <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px;">
-            <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
-               href="https://li.sten.to/sofaclub_AfterParty?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0Yw">
-              After Party 듣기
-            </a>
-          </div>
-
-          <div class="grid" style="margin-top:16px;">
-            <!-- g3: 기존처럼 유튜브 링크 카드 -->
-            <a class="media-card" href="https://www.youtube.com/watch?v=9K87CoAWG04" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube (g3)">
-              <img src="assets/g3.jpg" alt="SOFA CLUB - YouTube link (g3)" />
-              <div class="media-card__overlay">
-                <span class="tag"><span class="dot"></span> YouTube</span>
-              </div>
-            </a>
-
-            <!-- ✅ g4: 새로 추가 (클릭하면 지정한 유튜브 링크로 이동) -->
-            <a class="media-card" href="https://www.youtube.com/watch?v=WHEZ3vBBFTI" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube (g4)">
-              <img src="assets/g4.jpg" alt="SOFA CLUB - YouTube link (g4)" />
-              <div class="media-card__overlay">
-                <span class="tag"><span class="dot"></span> YouTube</span>
-              </div>
-            </a>
-          </div>
-        </div>
+    <section id="merch" class="section">
+      <div class="section-head">
+        <h2>MERCH</h2>
+        <p>Merch drops and shop links will live here.</p>
+      </div>
+      <div class="placeholder">
+        <div class="pill">Coming soon</div>
       </div>
     </section>
 
     <section id="live" class="section">
-      <div class="wrap">
-        <div class="section__head">
-          <h2 class="h2">LIVE</h2>
+      <div class="section-head">
+        <div>
+          <h2>LIVE</h2>
+          <p>Show dates and flyers will live here.</p>
         </div>
+      </div>
 
-        <div class="panel">
-          <p class="desc">Live 영상/클립</p>
+      <!-- ✅ g2 카드: 클릭하면 유튜브로 -->
+      <div class="grid">
+        <a
+          class="card"
+          href="https://www.youtube.com/watch?v=qWaFvhLWkpg"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Watch on YouTube (Live)"
+        >
+          <img src="./assets/g2.jpg" alt="Watch on YouTube" loading="lazy" />
+          <div class="card-overlay">WATCH ↗</div>
+        </a>
+      </div>
 
-          <div class="grid" style="margin-top:16px;">
-            <!-- g2: live 섹션 유튜브 링크 카드 -->
-            <a class="media-card" href="https://www.youtube.com/watch?v=qWaFvhLWkpg" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube (live g2)">
-              <img src="assets/g2.jpg" alt="SOFA CLUB - Live YouTube link (g2)" />
-              <div class="media-card__overlay">
-                <span class="tag"><span class="dot"></span> YouTube</span>
-              </div>
-            </a>
-          </div>
-        </div>
+      <div class="placeholder" style="margin-top:14px;">
+        <div class="pill">Coming soon</div>
       </div>
     </section>
 
     <footer class="footer">
-      <div class="wrap">
-        © SOFA CLUB
-      </div>
+      <span>© <span id="y"></span> SOFACLUB</span>
     </footer>
   </main>
 
   <script>
-    // 부드러운 스크롤(앵커 이동)
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const id = a.getAttribute('href');
-        if (!id || id === "#") return;
-        const el = document.querySelector(id);
-        if (!el) return;
-        e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        history.pushState(null, '', id);
-      });
-    });
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
