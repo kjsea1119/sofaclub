@@ -192,13 +192,17 @@ a:hover{ text-decoration:underline; text-underline-offset: 4px; }
   grid-template-columns: repeat(3, 1fr);
   gap:14px;
 }
+
+/* Card + overlay */
 .card{
+  position:relative;
   display:block;
   border-radius:18px;
   overflow:hidden;
   border:1px solid rgba(245,244,255,.10);
   background: rgba(255,255,255,.03);
   box-shadow: 0 18px 40px rgba(0,0,0,.35);
+  text-decoration:none;
 }
 .card img{
   width:100%;
@@ -208,6 +212,31 @@ a:hover{ text-decoration:underline; text-underline-offset: 4px; }
 }
 .card:hover{
   border-color: rgba(245,244,255,.22);
+  text-decoration:none;
+}
+
+/* ✅ hover 시 WATCH 라벨 */
+.card-overlay{
+  position:absolute;
+  right:14px;
+  bottom:14px;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid rgba(245,244,255,.18);
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  opacity:0;
+  transform: translateY(6px);
+  transition: opacity .2s ease, transform .2s ease;
+  pointer-events:none;
+}
+
+.card:hover .card-overlay{
+  opacity:1;
+  transform: translateY(0);
 }
 
 /* Placeholder */
@@ -219,6 +248,7 @@ a:hover{ text-decoration:underline; text-underline-offset: 4px; }
   border:1px dashed rgba(245,244,255,.18);
   background: rgba(255,255,255,.02);
 }
+
 .pill{
   display:inline-flex;
   padding:10px 14px;
